@@ -18,27 +18,22 @@ function Comments({ postId }) {
 
   async function handleSubmit(event) {
     event.preventDefault();
-
-    const { db } = await connectToDatabase();
+  
     const response = await axios.post('/api/comments', {
       email,
       comment,
       postId,
     });
   
-    await insertComment({ email, comment, postId });
-  
     setEmail('');
     setComment('');
   
     setComments((prevComments) => [...prevComments, response.data]);
   }
+  
 
   async function handleLike(commentId) {
-    const { db } = await connectToDatabase();
     const response = await axios.put(`/api/comments/${commentId}`);
-
-    await updateCommentLikes(commentId, response.data.likes);
   
     setComments((prevComments) =>
       prevComments.map((comment) =>
@@ -46,6 +41,7 @@ function Comments({ postId }) {
       )
     );
   }
+  
 
   return (
     <div className='bg-gray-100 mt-10'>
