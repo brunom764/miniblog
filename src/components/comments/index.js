@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { connectToDatabase, insertComment, updateCommentLikes} from '../../../config/mongodb';
 
 function Comments({ postId }) {
   const [email, setEmail] = useState('');
