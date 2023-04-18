@@ -1,3 +1,5 @@
+
+import Comments from '@/components/coments';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 
@@ -37,9 +39,13 @@ function Post() {
 
   return (
     <div>
-      <h2>oi</h2>
-      <h1>{post.title}</h1>
-      <p>{post.content}</p>
+      <h1 className='text-center mt-10'>{post.title}</h1>
+      <h3 className='text-center opacity-80 mb-10'>{post.author}</h3>
+      <div className='flex'>
+        <p className='mx-5 text-justify'>{post.content}</p>
+        <img src={post.coverImage} alt='picture' className='w-96 h-auto m-5'/>
+      </div>
+      <Comments/>
     </div>
   );
 }

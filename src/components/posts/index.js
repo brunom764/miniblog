@@ -11,7 +11,7 @@ function Posts() {
   useEffect(() => {
     async function fetchPosts() {
       try {
-        const res = await fetch('https://news-api.lublot.dev/api/posts?_start=0&_end=5');
+        const res = await fetch('https://news-api.lublot.dev/api/posts?_start=0&_end=8');
         const data = await res.json();
         setPosts(data);
         setLoading(false);
@@ -34,10 +34,10 @@ function Posts() {
 
   return (
     <div>
-      <h1>Últimas publicações</h1>
+      <h1 className='text-center m-5'>Últimas publicações</h1>
       <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
         {Array.isArray(posts) && posts.map((post) => (
-        <div key={post.id} className="mb-5 text-center lg:mb-0 lg:flex lg:text-left">
+        <div key={post.id} className="m-5 text-center lg:mb-0 lg:flex lg:text-left">
         <a
           href={`/post/${post.id}`}
           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
@@ -64,5 +64,4 @@ function Posts() {
 }
 
 export default Posts;
-
 
