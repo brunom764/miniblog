@@ -1,4 +1,4 @@
-import Comments from '@/components/coments';
+import Comments from '@/components/comments';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 
