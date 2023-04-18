@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb'
+import { MongoClient } from 'mongodb';
 
 let uri = process.env.MONGODB_URI || "" // trick ts :(
 let dbName = process.env.MONGODB_DB
@@ -34,4 +34,29 @@ export async function connectToDatabase() {
   cachedDb = db
 
   return { client, db }
+}
+
+export async function insertComment(comment) {
+  const { client, db } = await connectToDatabase();
+
+  await db.collection('comments').insertOne({
+    ...comment,
+    createdAt: new Date(),
+  });
+
+  client.close();
+}
+
+export async function getComments(postId) {
+  const { client, db } = await connectToDatabase();
+
+  const comments = await db
+    .collection('comments')
+    .find({ postId })
+    .sort({ createdAt: -1 })
+    .toArray();
+
+  client.close();
+
+  return comments;
 }
