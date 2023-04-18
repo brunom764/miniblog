@@ -40,26 +40,35 @@ function Comments({ postId }) {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">E-mail:</label>
-        <input
+    <div className='bg-gray-100 mt-10'>
+      <h1 className='text-center pt-10 mb-2 text-3xl uppercase'> Comentários</h1>
+      <form onSubmit={handleSubmit} className='flex flex-col items-center py-10'> 
+        <label htmlFor="email"></label>
+        <input 
           id="email"
           type="email"
+          placeholder="E M A I L"
+          className="rounded-lg py-2 px-4 w-64 placeholder-gray-400 text-sm text-black my-2"
           required
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         />
 
-        <label htmlFor="comment">Comentário:</label>
+        <label htmlFor="comment"></label>
         <textarea
           id="comment"
+          placeholder="C O M E N T Á R I O"
+          className="rounded-lg pb-8 pt-2 px-2 w-64 placeholder-gray-400 text-sm text-black my-2"
           required
           value={comment}
           onChange={(event) => setComment(event.target.value)}
         />
 
-        <button type="submit">Enviar comentário</button>
+        <button type="submit" 
+          className="inline-block bg-gray-300 rounded-full my-5 px-5 py-3 text-md font-semibold 
+          text-gray-700 mr-2 mb-2 hover:bg-gray-400">
+          Enviar comentário
+          </button>
       </form>
 
       <ul>

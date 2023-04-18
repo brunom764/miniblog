@@ -1,4 +1,5 @@
 import Comments from '@/components/comments';
+import Header from '@/components/header';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 
@@ -38,11 +39,12 @@ function Post() {
 
   return (
     <div>
-      <h1 className='text-center mt-10'>{post.title}</h1>
+      <Header/>
+      <h1 className='text-center mt-10 mb-2 text-3xl uppercase'>{post.title}</h1>
       <h3 className='text-center opacity-80 mb-10'>{post.author}</h3>
-      <div className='flex'>
+      <div className='flex flex-col m-5 lg:flex-row'>
+        <img src={post.coverImage} alt='picture' className='w-auto h-96 my-2 mx-5 object-cover'/>
         <p className='mx-5 text-justify'>{post.content}</p>
-        <img src={post.coverImage} alt='picture' className='w-96 h-auto m-5'/>
       </div>
       <Comments/>
     </div>
