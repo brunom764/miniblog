@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { connectToDatabase, insertComment, updateCommentLikes} from '../../../config/mongodb';
 
 function Comments({ postId }) {
   const [email, setEmail] = useState('');
@@ -8,30 +9,37 @@ function Comments({ postId }) {
 
   useEffect(() => {
     async function fetchComments() {
-      const response = await axios.get('/api/comments');
-      setComments(response.data);
+      const { db } = await connectToDatabase();
+      const comments = await db.collection('comments').find({ postId: postId }).toArray();
+      setComments(comments);
     }
     fetchComments();
-  }, []);
+  }, [postId]);
 
   async function handleSubmit(event) {
     event.preventDefault();
 
+    const { db } = await connectToDatabase();
     const response = await axios.post('/api/comments', {
       email,
       comment,
       postId,
     });
-
+  
+    await insertComment({ email, comment, postId });
+  
     setEmail('');
     setComment('');
-
+  
     setComments((prevComments) => [...prevComments, response.data]);
   }
 
   async function handleLike(commentId) {
+    const { db } = await connectToDatabase();
     const response = await axios.put(`/api/comments/${commentId}`);
 
+    await updateCommentLikes(commentId, response.data.likes);
+  
     setComments((prevComments) =>
       prevComments.map((comment) =>
         comment._id === commentId ? { ...comment, likes: response.data.likes } : comment
