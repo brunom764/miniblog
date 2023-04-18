@@ -1,61 +1,42 @@
-import { useState } from 'react';
-import { MongoClient } from 'mongodb';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function Comments({ postId }) {
   const [email, setEmail] = useState('');
   const [comment, setComment] = useState('');
   const [comments, setComments] = useState([]);
 
+  useEffect(() => {
+    async function fetchComments() {
+      const response = await axios.get('/api/comments');
+      setComments(response.data);
+    }
+    fetchComments();
+  }, []);
+
   async function handleSubmit(event) {
     event.preventDefault();
 
-    const client = new MongoClient(process.env.MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    await client.connect();
-    const db = client.db(process.env.MONGODB_DB);
-
-    await db.collection('comments').insertOne({
+    const response = await axios.post('/api/comments', {
       email,
       comment,
       postId,
-      likes: 0,
-      createdAt: new Date(),
     });
 
     setEmail('');
     setComment('');
 
-    const newComments = await db
-      .collection('comments')
-      .find({ postId })
-      .sort({ createdAt: -1 })
-      .toArray();
-    setComments(newComments);
+    setComments((prevComments) => [...prevComments, response.data]);
   }
 
   async function handleLike(commentId) {
-    const client = new MongoClient(process.env.MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    await client.connect();
-    const db = client.db(process.env.MONGODB_DB);
+    const response = await axios.put(`/api/comments/${commentId}`);
 
-    const result = await db
-      .collection('comments')
-      .findOneAndUpdate(
-        { _id: commentId },
-        { $inc: { likes: 1 } },
-        { returnOriginal: false }
-      );
-
-    const updatedComment = result.value;
-    const updatedComments = comments.map((c) =>
-      c._id === updatedComment._id ? updatedComment : c
+    setComments((prevComments) =>
+      prevComments.map((comment) =>
+        comment._id === commentId ? { ...comment, likes: response.data.likes } : comment
+      )
     );
-    setComments(updatedComments);
   }
 
   return (
@@ -97,4 +78,5 @@ function Comments({ postId }) {
 }
 
 export default Comments;
+
 

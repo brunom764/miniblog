@@ -1,7 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
 
 function Posts() {
   const [posts, setPosts] = useState([]);
@@ -11,7 +8,7 @@ function Posts() {
   useEffect(() => {
     async function fetchPosts() {
       try {
-        const res = await fetch('https://news-api.lublot.dev/api/posts?_start=0&_end=8');
+        const res = await fetch('https://news-api.lublot.dev/api/posts?_start=0&_end=6');
         const data = await res.json();
         setPosts(data);
         setLoading(false);
@@ -34,28 +31,21 @@ function Posts() {
 
   return (
     <div>
-      <h1 className='text-center m-5'>Últimas publicações</h1>
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
+      <h1 className='text-center m-5 text-gray-600'>Últimas publicações</h1>
+      <div className="mb-5 grid text-center lg:grid-cols-3 lg:text-left">
         {Array.isArray(posts) && posts.map((post) => (
-        <div key={post.id} className="m-5 text-center lg:mb-0 lg:flex lg:text-left">
-        <a
-          href={`/post/${post.id}`}
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            {post.title}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            {post.author}
+        <div key={post.id} class="max-w-sm rounded overflow-hidden shadow-lg mx-2 my-6">
+        <img class="w-full" src={post.coverImage} alt="Sunset in the mountains"/>
+        <div class="px-6 py-4">
+          <h2 class="font-bold text-xl mb-2">{post.title}</h2>
+          <p class="text-gray-700 text-base">
+          {post.content.substr(0, 120).replace(/\s\S*$/, '...')}
           </p>
-        </a>
+        </div>
+        <div class="px-6 pt-4 pb-2">
+          <span class="inline-block bg-gray-200 rounded-full px-5 py-3 text-md font-semibold text-gray-700 mr-2 mb-2 hover:bg-gray-400">
+            <a  href={`/post/${post.id}`} target="_blank">Ver mais</a></span>
+        </div>
       </div>
         ))}
       </div>
