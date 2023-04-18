@@ -9,9 +9,8 @@ function Comments({ postId }) {
 
   useEffect(() => {
     async function fetchComments() {
-      const { db } = await connectToDatabase();
-      const comments = await db.collection('comments').find({ postId: postId }).toArray();
-      setComments(comments);
+      const response = await axios.get(`/api/comments?postId=${postId}`);
+      setComments(response.data);
     }
     fetchComments();
   }, [postId]);
