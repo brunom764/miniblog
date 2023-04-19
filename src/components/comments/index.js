@@ -3,7 +3,7 @@ import axios from 'axios';
 import commentsData from '../../data/comments.json';
 
 
-function Comments({ postId }) {
+function Comments(postId) {
   const [email, setEmail] = useState('');
   const [comment, setComment] = useState('');
   const [comments, setComments] = useState(commentsData);
@@ -21,15 +21,10 @@ function Comments({ postId }) {
     event.preventDefault();
   
     const newComment = {
-      id: postId,
-      key: `${postId}+${email}`,
+      key: postId + email,
       email: email,
       text: comment,
-      like: 0,
-      answer: {
-        id: 0,
-        text: "",
-      },
+      like: 0
     };
   
     // faz um post para o endpoint /api/comments para salvar o novo comentário no backend
@@ -42,9 +37,9 @@ function Comments({ postId }) {
     setComment("");
   }
   
-  async function handleLike(commentId) {
+  async function handleLike(commentKey) {
     const updatedComments = comments.map((c) => {
-      if (c.id === commentId) {
+      if (c.key === commentKey) {
         return {
           ...c,
           like: c.like + 1,
@@ -54,18 +49,17 @@ function Comments({ postId }) {
     });
   
     // atualiza o commentsData com o comentário que recebeu um like
-    const comment = commentsData.find((c) => c.id === commentId);
+    const comment = commentsData.find((c) => c.key === commentKey);
     comment.like += 1;
   
     // faz um post para o endpoint /api/comments para salvar o novo estado dos comentários no backend
-    await axios.post("http://localhost:4000/api/comments", commentsData);
+    await axios.post("http://localhost:4000/api/comments", comment);
   
     // atualiza o estado comments com o novo número de curtidas
     setComments(updatedComments);
   }
   
   
-
   return (
     <div className='bg-gray-100 mt-10'>
       <h1 className='text-center pt-10 mb-2 text-3xl uppercase'> Comente!</h1>
@@ -102,7 +96,7 @@ function Comments({ postId }) {
         <h1 className='text-center pt-10 mb-2 text-3xl uppercase'> Comentários</h1>
         <ul className='m-5'>
         {comments
-         .filter(comment => comment.id === postId && comment.email.length > 0 && comment.text.length > 0)
+         .filter(comment => comment.email  && comment.text)
          .map((comment) => (
           <li className='p-3 m-3 border border-black rounded-xl bg-gray-100' key={comment.key}>
           <div className='flex'>

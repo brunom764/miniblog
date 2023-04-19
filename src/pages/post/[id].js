@@ -46,7 +46,7 @@ function Post() {
         <img src={post.coverImage} alt='picture' className='w-auto h-96 my-2 mx-5 object-cover'/>
         <p className='mx-5 text-justify'>{post.content}</p>
       </div>
-      <Comments/>
+      <Comments postId={id}/>
     </div>
   );
 }
