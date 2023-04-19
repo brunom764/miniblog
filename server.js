@@ -24,14 +24,14 @@ app.post('/api/comments', async (req, res) => {
     const comments = JSON.parse(fs.readFileSync('./src/data/comments.json'));
     const newComment = {
       id: postId,
-      key: email,
+      key: email + Math.random(),
       email: email,
       comment: comment,
       like: 0,
-      answer: {
+      answer: [{
         id: 0,
         text: ''
-      }
+      }]
     };
     const updatedComments = [...comments, newComment];
     fs.writeFileSync('./src/data/comments.json', JSON.stringify(updatedComments, null, 2));
