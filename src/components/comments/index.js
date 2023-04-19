@@ -125,7 +125,7 @@ function Comments(postId) {
         <h1 className='text-center pt-10 mb-2 text-3xl uppercase'> Comentários</h1>
         <ul className='m-5'>
         {comments
-         .filter(comment => comment.id == postId  && comment.email)
+         .filter(comment => comment.id == postId.postId  && comment.email)
          .map((comment) => (
           <li className='p-3 m-3 border border-black rounded-xl bg-gray-100' key={comment.key}>
           <div className='flex'>
@@ -135,9 +135,11 @@ function Comments(postId) {
           {comment.answer && comment.answer.length > 0 && (
             <ul>
               {comment.answer.map((answer) => (
-                <li key={answer.id}>
-                  Uma pessoa respondeu:{answer.text}
-                </li>
+                answer.text.length > 0 && (
+                  <li key={answer.id}>
+                    Uma pessoa respondeu: {answer.text}
+                  </li>
+                )
               ))}
             </ul>
           )}

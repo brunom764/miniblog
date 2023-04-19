@@ -60,8 +60,11 @@ app.post('/api/comments/answer', async (req, res) => {
     const updatedComment = req.body;
 
     // atualiza o commentsData com a resposta ao comentário
-    const comment = comments.find((c) => c.key === updatedComment.key);
-    comment.answer.push(updatedComment.answer);
+    const commentIndex = comments.findIndex((c) => c.key === updatedComment.key);
+    if (commentIndex !== -1) {
+      comments[commentIndex].answer.push(updatedComment.answer);
+    }
+
 
     // atualiza o arquivo comments.json com os comentários atualizados
     fs.writeFileSync('./src/data/comments.json', JSON.stringify(comments, null, 2));
