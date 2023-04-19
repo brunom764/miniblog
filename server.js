@@ -54,6 +54,24 @@ app.put('/api/comments', async (req, res) => {
   }
 });
 
+app.post('/api/comments/answer', async (req, res) => {
+  try {
+    const comments = JSON.parse(fs.readFileSync('./src/data/comments.json'));
+    const updatedComment = req.body;
+
+    // atualiza o commentsData com a resposta ao comentário
+    const comment = comments.find((c) => c.key === updatedComment.key);
+    comment.answer.push(updatedComment.answer);
+
+    // atualiza o arquivo comments.json com os comentários atualizados
+    fs.writeFileSync('./src/data/comments.json', JSON.stringify(comments, null, 2));
+    
+    res.json(updatedComment);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
 
 const PORT = process.env.PORT || 4000;
 

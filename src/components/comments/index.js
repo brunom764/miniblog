@@ -74,18 +74,13 @@ function Comments(postId) {
       text: answer,
     };
   
-    // Verifica se c.answer é um array antes de usar o operador spread
     const updatedComment = {
       ...c,
-      answer: Array.isArray(c.answer) ? [...c.answer, newAnswer] : [newAnswer],
+      answer: newAnswer,
     };
   
-    // atualiza o commentsData com a resposta ao comentário
-    const index = commentsData.findIndex((c) => c.key === commentKey);
-    commentsData[index] = updatedComment;
-  
-    // faz um post para o endpoint /api/comments para salvar o novo estado dos comentários no backend
-    axios.put("http://localhost:4000/api/comments", updatedComment);
+    // faz um post para o endpoint /api/comments/answer para salvar a nova resposta no backend
+    await axios.post("http://localhost:4000/api/comments/answer", updatedComment);
   
     // atualiza o estado comments com a nova resposta
     setComments(commentsData);
