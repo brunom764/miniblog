@@ -42,6 +42,19 @@ app.post('/api/comments', async (req, res) => {
   }
 });
 
+app.put('/api/comments', async (req, res) => {
+  try {
+    const comments = JSON.parse(fs.readFileSync('./src/data/comments.json'));
+    const updatedComments = req.body;
+    fs.writeFileSync('./src/data/comments.json', JSON.stringify(updatedComments, null, 2));
+    res.json(updatedComments);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+
 const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => {
