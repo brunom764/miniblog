@@ -22,10 +22,15 @@ function Comments(postId) {
     event.preventDefault();
   
     const newComment = {
+      id: postId,
       key: email,
       email: email,
-      text: comment,
-      like: 0
+      comment: comment,
+      like: 0,
+      answer: {
+        id: 0,
+        text: ''
+      }
     };
   
     // adiciona o novo comentário ao estado comments
@@ -125,12 +130,12 @@ function Comments(postId) {
         <h1 className='text-center pt-10 mb-2 text-3xl uppercase'> Comentários</h1>
         <ul className='m-5'>
         {comments
-         .filter(comment => comment.email  && comment.text)
+         .filter(comment => comment.email)
          .map((comment) => (
           <li className='p-3 m-3 border border-black rounded-xl bg-gray-100' key={comment.key}>
           <div className='flex'>
             <h5 className='pr-2'>{comment.email} comentou:</h5>
-            <p className=''>{comment.text}</p>
+            <p className=''>{comment.comment}</p>
           </div>
 
           <p className='my-3'>
