@@ -20,15 +20,17 @@ app.get('/api/comments', async (req, res) => {
 
 app.post('/api/comments', async (req, res) => {
   try {
-    const { email, comment, postId } = req.body;
+    const { postId, email, comment } = req.body;
     const comments = JSON.parse(fs.readFileSync('./src/data/comments.json'));
     const newComment = {
-      id: comments.length,
-      text: comment,
+      id: postId,
+      key: email,
+      email: email,
+      comment: comment,
       like: 0,
       answer: {
         id: 0,
-        text: 'Massas'
+        text: ''
       }
     };
     const updatedComments = [...comments, newComment];
