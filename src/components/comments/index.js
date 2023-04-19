@@ -60,7 +60,7 @@ function Comments(postId) {
     comment.like += 1;
   
     // faz um post para o endpoint /api/comments para salvar o novo estado dos comentários no backend
-    await axios.post("http://localhost:4000/api/comments", updatedComments);
+    await axios.put("http://localhost:4000/api/comments", updatedComments);
   
     // atualiza o estado comments com o novo número de curtidas
     setComments(updatedComments);
@@ -85,7 +85,7 @@ function Comments(postId) {
     commentsData[index] = updatedComment;
   
     // faz um post para o endpoint /api/comments para salvar o novo estado dos comentários no backend
-    axios.post("http://localhost:4000/api/comments", updatedComment);
+    axios.put("http://localhost:4000/api/comments", updatedComment);
   
     // atualiza o estado comments com a nova resposta
     setComments(commentsData);
