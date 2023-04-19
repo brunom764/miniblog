@@ -1,13 +1,13 @@
-{
-  "id": 0,
-  "key": 0,
-  "email": "carlos@gmail.com",
-  "comment": "Macarrão spaghetti com frutos-do-mar e especíarias, especialidade da cozinha. Atenção: Contém camarão e outros frutos-do-mar!",
-  "like": 4,
-  "answer": [
-    {
-      "id": 0.8283992854472348,
-      "text": "xxxx"
+[
+  {
+    "id": 0,
+    "key": 0,
+    "email": "carlos@gmail.com",
+    "comment": "Macarrão spaghetti com frutos-do-mar e especíarias, especialidade da cozinha. Atenção: Contém camarão e outros frutos-do-mar!",
+    "like": 4,
+    "answer": {
+      "id": 0,
+      "text": "massas"
     }
-  ]
-}
+  }
+]
