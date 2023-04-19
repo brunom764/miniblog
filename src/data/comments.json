@@ -1,0 +1,165 @@
+[
+  {
+    "id": 0,
+    "key": 0,
+    "email": "carlos@gmail.com",
+    "text": "Macarrão spaghetti com frutos-do-mar e especíarias, especialidade da cozinha. Atenção: Contém camarão e outros frutos-do-mar!",
+    "like": 2,
+    "answer": {
+      "id": 0,
+      "text": "Massas"
+    }
+  },
+  {
+    "id": 1,
+    "like": 0,
+    "answer": {
+      "id": 0,
+      "text": "Massas"
+    }
+  },
+  {
+    "id": 2,
+    "like": 0,
+    "answer": {
+      "id": 0,
+      "text": "Massas"
+    }
+  },
+  {
+    "id": 3,
+    "like": 0,
+    "answer": {
+      "id": 0,
+      "text": "Massas"
+    }
+  },
+  {
+    "id": 4,
+    "like": 0,
+    "answer": {
+      "id": 0,
+      "text": "Massas"
+    }
+  },
+  {
+    "id": 5,
+    "like": 0,
+    "answer": {
+      "id": 0,
+      "text": "Massas"
+    }
+  },
+  {
+    "id": 6,
+    "like": 0,
+    "answer": {
+      "id": 0,
+      "text": "Massas"
+    }
+  },
+  {
+    "id": 7,
+    "like": 0,
+    "answer": {
+      "id": 0,
+      "text": "Massas"
+    }
+  },
+  {
+    "id": 8,
+    "like": 0,
+    "answer": {
+      "id": 0,
+      "text": "Massas"
+    }
+  },
+  {
+    "id": 9,
+    "like": 0,
+    "answer": {
+      "id": 0,
+      "text": "Massas"
+    }
+  },
+  {
+    "id": 10,
+    "like": 0,
+    "answer": {
+      "id": 0,
+      "text": "Massas"
+    }
+  },
+  {
+    "id": 11,
+    "like": 0,
+    "answer": {
+      "id": 0,
+      "text": "Massas"
+    }
+  },
+  {
+    "id": 12,
+    "like": 0,
+    "answer": {
+      "id": 0,
+      "text": "Massas"
+    }
+  },
+  {
+    "id": 13,
+    "like": 0,
+    "answer": {
+      "id": 0,
+      "text": "Massas"
+    }
+  },
+  {
+    "id": 14,
+    "like": 0,
+    "answer": {
+      "id": 0,
+      "text": "Massas"
+    }
+  },
+  {
+    "id": 15,
+    "like": 0,
+    "answer": {
+      "id": 0,
+      "text": "Massas"
+    }
+  },
+  {
+    "id": 16,
+    "like": 0,
+    "answer": {
+      "id": 0,
+      "text": "Massas"
+    }
+  },
+  {
+    "id": 17,
+    "like": 0,
+    "answer": {
+      "id": 0,
+      "text": "Massas"
+    }
+  },
+  {
+    "id": 18,
+    "like": 0,
+    "answer": {
+      "id": 0,
+      "text": "Massas"
+    }
+  },
+  {
+    "id": 19,
+    "like": 0,
+    "answer": {
+      "id": 0,
+      "text": "Massas"
+    }
+  }
+]
