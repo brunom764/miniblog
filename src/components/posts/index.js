@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
 function Posts() {
@@ -45,7 +46,7 @@ function Posts() {
           <div class="px-6 pt-4 pb-2">
             <span class="inline-block bg-gray-200 rounded-full px-5 py-3 text-md 
             font-semibold text-gray-700 mr-2 mb-2 hover:bg-gray-400">
-              <a  href={`/post/${post.id}`} target="_blank">Ver mais</a></span>
+              <Link  href={`/post/${post.id}`} target="_blank">Ver mais</Link></span>
         </div>
       </div>
         ))}

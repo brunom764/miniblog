@@ -121,7 +121,7 @@ function Comments(postId) {
           </button>
       </form>
 
-      <section className='bg-gray-200 py-10'>
+  <section className='bg-gray-200 py-10'>
   <h1 className='text-center pt-10 mb-2 text-3xl uppercase'> Comentários</h1>
   <ul className='m-5'>
     {comments
@@ -129,7 +129,8 @@ function Comments(postId) {
      .map((comment) => (
       <li className='p-3 m-3 border border-black rounded-xl bg-gray-100' key={comment.key}>
         <div className='flex items-center mb-3'>
-          <img className='w-10 h-10 rounded-full mr-3' src='https://source.unsplash.com/random' alt='Profile'/>
+          <img className='h-10 w-10 rounded-full mr-3'
+           src='https://source.unsplash.com/random' alt='Profile'/>
           <div>
             <h5 className='text-sm font-semibold'>{comment.email}</h5>
             <p className='text-gray-700'>{comment.comment}</p>
@@ -167,7 +168,9 @@ function Comments(postId) {
             {comment.answer.map((answer) => (
               answer.text.length > 0 && (
                 <li key={answer.id}>
-                  <span className='text-gray-700'>Pessoa {parseInt(Math.random(0,10) * 10)} respondeu esse comentário: </span>
+                  <span className='text-gray-700'>
+                    Pessoa {parseInt(Math.random(0,10) * 10)} respondeu esse comentário: 
+                  </span>
                   {answer.text}
                 </li>
               )
