@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import commentsData from '../../data/comments.json';
+
 
 function Comments({ postId }) {
   const [email, setEmail] = useState('');
   const [comment, setComment] = useState('');
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState(commentsData);
+
 
   useEffect(() => {
     async function fetchComments() {
-      const response = await axios.get(`/api/comments?postId=${postId}`);
+      const response = await axios.get('http://localhost:4000/api/comments');
       setComments(response.data);
     }
     fetchComments();
@@ -17,33 +20,55 @@ function Comments({ postId }) {
   async function handleSubmit(event) {
     event.preventDefault();
   
-    const response = await axios.post('/api/comments', {
-      email,
-      comment,
-      postId,
+    const newComment = {
+      id: postId,
+      key: `${postId}+${email}`,
+      email: email,
+      text: comment,
+      like: 0,
+      answer: {
+        id: 0,
+        text: "",
+      },
+    };
+  
+    // faz um post para o endpoint /api/comments para salvar o novo comentário no backend
+    await axios.post("http://localhost:4000/api/comments", newComment);
+  
+    // adiciona o novo comentário ao estado comments
+    setComments([...comments, newComment]);
+  
+    setEmail("");
+    setComment("");
+  }
+  
+  async function handleLike(commentId) {
+    const updatedComments = comments.map((c) => {
+      if (c.id === commentId) {
+        return {
+          ...c,
+          like: c.like + 1,
+        };
+      }
+      return c;
     });
   
-    setEmail('');
-    setComment('');
+    // atualiza o commentsData com o comentário que recebeu um like
+    const comment = commentsData.find((c) => c.id === commentId);
+    comment.like += 1;
   
-    setComments((prevComments) => [...prevComments, response.data]);
+    // faz um post para o endpoint /api/comments para salvar o novo estado dos comentários no backend
+    await axios.post("http://localhost:4000/api/comments", commentsData);
+  
+    // atualiza o estado comments com o novo número de curtidas
+    setComments(updatedComments);
   }
   
-
-  async function handleLike(commentId) {
-    const response = await axios.put(`/api/comments/${commentId}`);
-  
-    setComments((prevComments) =>
-      prevComments.map((comment) =>
-        comment._id === commentId ? { ...comment, likes: response.data.likes } : comment
-      )
-    );
-  }
   
 
   return (
     <div className='bg-gray-100 mt-10'>
-      <h1 className='text-center pt-10 mb-2 text-3xl uppercase'> Comentários</h1>
+      <h1 className='text-center pt-10 mb-2 text-3xl uppercase'> Comente!</h1>
       <form onSubmit={handleSubmit} className='flex flex-col items-center py-10'> 
         <label htmlFor="email"></label>
         <input 
@@ -73,17 +98,26 @@ function Comments({ postId }) {
           </button>
       </form>
 
-      <ul>
-        {comments.map((comment) => (
-          <li key={comment._id}>
-            <p>{comment.comment}</p>
-            <p>
-              Likes: {comment.likes}{' '}
-              <button onClick={() => handleLike(comment._id)}>Curtir</button>
-            </p>
+      <section className='bg-gray-200 py-10'>
+        <h1 className='text-center pt-10 mb-2 text-3xl uppercase'> Comentários</h1>
+        <ul className='m-5'>
+        {comments
+         .filter(comment => comment.id === postId && comment.email.length > 0 && comment.text.length > 0)
+         .map((comment) => (
+          <li className='p-3 m-3 border border-black rounded-xl bg-gray-100' key={comment.key}>
+          <div className='flex'>
+            <h5 className='pr-2'>{comment.email} comentou:</h5>
+            <p className=''>{comment.text}</p>
+          </div>
+          <p className='my-3'>
+           {comment.like}{' '} Curtidas
+            <button className='border rounded-xl border-black uppercase p-2 mx-2' 
+            onClick={() => handleLike(comment.key)}>Curtir</button>
+          </p>
           </li>
         ))}
-      </ul>
+        </ul>
+      </section>
     </div>
   );
 }
