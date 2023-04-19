@@ -135,18 +135,6 @@ function Comments(postId) {
             <p className='text-gray-700'>{comment.comment}</p>
           </div>
         </div>
-        {comment.answer && comment.answer.length > 0 && (
-          <ul>
-            {comment.answer.map((answer) => (
-              answer.text.length > 0 && (
-                <li key={answer.id}>
-                  <span className='text-gray-700'>Uma pessoa respondeu: </span>
-                  {answer.text}
-                </li>
-              )
-            ))}
-          </ul>
-        )}
 
         <div className='flex items-center mt-3'>
         <button
@@ -174,6 +162,18 @@ function Comments(postId) {
               Enviar
             </button>
           </div>
+          {comment.answer && comment.answer.length > 0 && (
+          <ul>
+            {comment.answer.map((answer) => (
+              answer.text.length > 0 && (
+                <li key={answer.id}>
+                  <span className='text-gray-700'>Pessoa {parseInt(Math.random(0,10) * 10)} respondeu esse comentário: </span>
+                  {answer.text}
+                </li>
+              )
+            ))}
+          </ul>
+        )}
         </li>
       ))}
     </ul>
