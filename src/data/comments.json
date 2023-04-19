@@ -13,37 +13,19 @@
       {
         "id": 0.5161197578641534,
         "text": "aa"
+      },
+      {
+        "id": 0.7847870513729722,
+        "text": "a"
       }
     ]
   },
   {
     "id": "b854eeca-1544-4fdf-aa94-52a31290ccf1",
-    "key": "bmma@cin.ufpe.br",
-    "email": "bmma@cin.ufpe.br",
-    "comment": "aaa",
-    "like": 0,
-    "answer": {
-      "id": 0,
-      "text": ""
-    }
-  },
-  {
-    "id": "b854eeca-1544-4fdf-aa94-52a31290ccf1",
-    "key": "bmma@cin.ufpe.br",
-    "email": "bmma@cin.ufpe.br",
-    "comment": "abc",
-    "like": 0,
-    "answer": {
-      "id": 0,
-      "text": ""
-    }
-  },
-  {
-    "id": "b854eeca-1544-4fdf-aa94-52a31290ccf1",
-    "key": "brunom764@gmail.com",
-    "email": "brunom764@gmail.com",
-    "comment": "oi",
-    "like": 0,
+    "key": "aaa@gmail.com0.10386093206321534",
+    "email": "aaa@gmail.com",
+    "comment": "bbb",
+    "like": 2,
     "answer": {
       "id": 0,
       "text": ""
