@@ -1,93 +1,19 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import commentsData from '../../data/comments.json';
+import { useState} from 'react';
+import { useComments } from './useComments';
 
 
 function Comments(postId) {
+  const { comments, addComment, addLike, addAnswer } = useComments(postId);
   const [email, setEmail] = useState('');
   const [comment, setComment] = useState('');
   const [answer, setAnswer] = useState('');
-  const [comments, setComments] = useState(commentsData);
 
-
-  useEffect(() => {
-    async function fetchComments() {
-      const response = await axios.get('http://localhost:4000/api/comments');
-      setComments(response.data);
-    }
-    fetchComments();
-  }, [postId]);
-
-  async function handleSubmit(event) {
+  function handleSubmit(event) {
     event.preventDefault();
-  
-    const newComment = {
-      postId: postId.postId,
-      key: email,
-      email: email,
-      comment: comment,
-      like: 0,
-      answer: {
-        id: 0,
-        text: ''
-      }
-    };
-  
-    // adiciona o novo comentário ao estado comments
-    setComments([...comments, newComment]);
-
-
-    // faz um post para o endpoint /api/comments para salvar o novo comentário no backend
-    await axios.post("http://localhost:4000/api/comments", newComment);
-  
-    setEmail("");
-    setComment("");
+    addComment(email, comment);
+    setEmail('');
+    setComment('');
   }
-  
-  async function handleLike(commentKey) {
-    const updatedComments = comments.map((c) => {
-      if (c.key === commentKey) {
-        return {
-          ...c,
-          like: c.like + 1,
-        };
-      }
-      return c;
-    });
-  
-    // atualiza o commentsData com o comentário que recebeu um like
-    const comment = commentsData.find((c) => c.key === commentKey);
-    comment.like += 1;
-  
-    // faz um post para o endpoint /api/comments para salvar o novo estado dos comentários no backend
-    await axios.put("http://localhost:4000/api/comments", updatedComments);
-  
-    // atualiza o estado comments com o novo número de curtidas
-    setComments(updatedComments);
-  }
-
-  async function handleAnswer(commentKey) {
-    const c = commentsData.find((c) => c.key === commentKey);
-  
-    const newAnswer = {
-      id: Math.random(),
-      text: answer,
-    };
-  
-    const updatedComment = {
-      ...c,
-      answer: newAnswer,
-    };
-  
-    // faz um post para o endpoint /api/comments/answer para salvar a nova resposta no backend
-    await axios.post("http://localhost:4000/api/comments/answer", updatedComment);
-  
-    // atualiza o estado comments com a nova resposta
-    setComments(commentsData);
-    setAnswer("");
-  }
-  
-  
   
   return (
     <div className='bg-gray-100 mt-10'>
@@ -143,7 +69,7 @@ function Comments(postId) {
              rounded-full shadow-sm text-sm font-medium text-gray-700 
              bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 
              focus:ring-offset-2 focus:ring-gray-500'
-          onClick={() => handleLike(comment.key)}>
+          onClick={() => addLike(comment.key)}>
          <span>{comment.like} curtidas</span>
         </button>
 
@@ -159,7 +85,7 @@ function Comments(postId) {
           <button  
             className="bg-gray-300 rounded-full px-2 py-1 text-sm font-semibold 
               text-gray-700 hover:bg-gray-400" 
-              onClick={() => handleAnswer(comment.key)}>
+              onClick={() => addAnswer(comment.key, answer)}>
               Enviar
             </button>
           </div>
@@ -169,7 +95,7 @@ function Comments(postId) {
               answer.text.length > 0 && (
                 <li key={answer.id}>
                   <span className='text-gray-700'>
-                    Pessoa {parseInt(Math.random(0,10) * 10)} respondeu esse comentário: 
+                    Pessoa {parseInt(answer.id)} respondeu esse comentário: 
                   </span>
                   {answer.text}
                 </li>
