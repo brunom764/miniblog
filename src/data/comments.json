@@ -36,7 +36,7 @@
     "key": "bmma@cin.ufpe.br0.04985783846718794",
     "email": "bmma@cin.ufpe.br",
     "comment": "xxx",
-    "like": 3,
+    "like": 4,
     "answer": [
       {
         "id": 0,
@@ -53,6 +53,10 @@
       {
         "id": 6.307939415879053,
         "text": "certo"
+      },
+      {
+        "id": 5.94191773517532,
+        "text": "concordo"
       }
     ]
   },
@@ -96,6 +100,23 @@
       {
         "id": 0,
         "text": ""
+      }
+    ]
+  },
+  {
+    "id": "087766f8-8b30-40a1-9a2a-62773effc547",
+    "key": "aaa@gmail.com0.043047406268107435",
+    "email": "aaa@gmail.com",
+    "comment": "ok",
+    "like": 1,
+    "answer": [
+      {
+        "id": 0,
+        "text": ""
+      },
+      {
+        "id": 4.239652602025947,
+        "text": "legal"
       }
     ]
   }
