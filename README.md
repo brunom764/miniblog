@@ -26,8 +26,8 @@ Desafio prático para a vaga de estágio FullStack da Oper, onde foi pedido para
 
 ## Inicar projeto:
     - Clone o repositório: https://github.com/brunom764/miniblog.git
-    - Baixe suas dependências
-    - No terminal, digite: "npm run dev" e "npm run server"
+    - Baixe suas dependências, digite no terminal: "npm i"
+    - No terminal, digite: "npm run dev", para o deploy, e "npm run server", para ativar o servidor.
     
 # Capturas do projeto
 
