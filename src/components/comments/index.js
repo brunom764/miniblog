@@ -11,7 +11,7 @@ function Comments(postId) {
       <h1 className='text-center pt-10 mb-2 text-3xl uppercase'> Comente!</h1>
       <CommentForm addComment={addComment} />
 
-      <section className='bg-gray-200 py-10'>
+    <section className='bg-gray-200 py-10'>
         <h1 className='text-center pt-10 mb-2 text-3xl uppercase'> Comentários</h1>
         <ul className='m-5'>
     {comments
