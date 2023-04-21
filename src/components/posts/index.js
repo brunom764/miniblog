@@ -23,7 +23,11 @@ function Posts() {
   
 
   if (loading) {
-    return <p>Loading posts...</p>;
+    return(
+    <div className="flex items-center justify-center h-screen">
+      <p>Carregando...</p>
+    </div>
+    )
   }
 
   if (error) {

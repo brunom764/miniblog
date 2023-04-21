@@ -23,7 +23,7 @@
     "key": "aaa@gmail.com0.6973801448726886",
     "email": "aaa@gmail.com",
     "comment": "xxx",
-    "like": 1,
+    "like": 2,
     "answer": [
       {
         "id": 0,
@@ -38,6 +38,42 @@
         "id": "hxb@gmail.com0.7182671719989697",
         "email": "hxb@gmail.com",
         "text": "discordo"
+      }
+    ]
+  },
+  {
+    "id": "1d5a8d9a-3b10-4d5a-901c-670cac954c51",
+    "key": "b64@gmail.com0.535074208834555",
+    "email": "b64@gmail.com",
+    "comment": "kkkkkk",
+    "like": 0,
+    "answer": [
+      {
+        "id": 0,
+        "text": ""
+      },
+      {
+        "id": "j@gmail.com0.5496103636559744",
+        "email": "j@gmail.com",
+        "text": "???"
+      }
+    ]
+  },
+  {
+    "id": "087766f8-8b30-40a1-9a2a-62773effc547",
+    "key": "bbb@gmail.com0.12105025560621785",
+    "email": "bbb@gmail.com",
+    "comment": "lindo",
+    "like": 2,
+    "answer": [
+      {
+        "id": 0,
+        "text": ""
+      },
+      {
+        "id": "cc@gmail.com0.8804332534198065",
+        "email": "cc@gmail.com",
+        "text": "não sei"
       }
     ]
   }

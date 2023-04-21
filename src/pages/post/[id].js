@@ -30,8 +30,11 @@ function Post() {
   }, [id, prevId]);
 
   if (loading) {
-    return <p>Loading post...</p>;
-  }
+    return (
+    <div className="flex items-center justify-center h-screen">
+      <p>Loading post...</p>
+    </div>
+  )}
 
   if (error) {
     return <p>{error}</p>;
