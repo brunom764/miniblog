@@ -30,6 +30,7 @@ app.post('/api/comments', async (req, res) => {
       like: 0,
       answer: [{
         id: 0,
+        email: '',
         text: ''
       }]
     };
