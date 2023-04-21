@@ -41,8 +41,8 @@ function Comments(postId) {
             {comment.answer.map((answer) => (
               answer.text.length > 0 && (
                 <li key={answer.id}>
-                  <span className='text-gray-700'>
-                    Pessoa {parseInt(answer.id)} respondeu esse comentário: 
+                  <span className='text-gray-700 mr-2'>
+                    O usuário {answer.email} respondeu:   
                   </span>
                   {answer.text}
                 </li>
