@@ -38,5 +38,5 @@ Desafio prático para a vaga de estágio FullStack da Oper, onde foi pedido para
 
 ![image](https://user-images.githubusercontent.com/100159869/233356870-c641b8fe-98ac-4aca-a239-15be3aaa92b1.png)
 
-![image](https://user-images.githubusercontent.com/100159869/233356968-5ddad50c-eec9-49e0-8dd4-6a4e925988b7.png)
+![image](https://user-images.githubusercontent.com/100159869/233512712-173b042d-c74e-4fde-b848-ec3020c8d342.png)
 
