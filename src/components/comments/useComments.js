@@ -49,11 +49,12 @@ export function useComments(postId) {
     setComments(updatedComments);
   }
 
-  async function addAnswer(commentKey, answer) {
+  async function addAnswer(commentKey, emailA, answer) {
     const c = commentsData.find((c) => c.key === commentKey);
 
     const newAnswer = {
-      id: Math.random() * 10,
+      id: emailA + Math.random(),
+      email: emailA,
       text: answer,
     };
 

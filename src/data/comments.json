@@ -8,115 +8,36 @@
     "answer": [
       {
         "id": 0,
+        "email": "carla@gmail.com",
         "text": "massas"
       },
       {
         "id": 0.5161197578641534,
+        "email": "j@gmail.com",
         "text": "aa"
-      },
-      {
-        "id": 0.7847870513729722,
-        "text": "a"
       }
     ]
   },
   {
-    "id": "b854eeca-1544-4fdf-aa94-52a31290ccf1",
-    "key": "aaa@gmail.com0.10386093206321534",
-    "email": "aaa@gmail.com",
-    "comment": "bbb",
-    "like": 2,
-    "answer": {
-      "id": 0,
-      "text": ""
-    }
-  },
-  {
     "id": "087766f8-8b30-40a1-9a2a-62773effc547",
-    "key": "bmma@cin.ufpe.br0.04985783846718794",
-    "email": "bmma@cin.ufpe.br",
+    "key": "aaa@gmail.com0.6973801448726886",
+    "email": "aaa@gmail.com",
     "comment": "xxx",
-    "like": 4,
+    "like": 1,
     "answer": [
       {
         "id": 0,
         "text": ""
       },
       {
-        "id": 0.8009836462522841,
-        "text": "xxxx"
-      },
-      {
-        "id": 0.1610984518482088,
-        "text": "a"
-      },
-      {
-        "id": 6.307939415879053,
-        "text": "certo"
-      },
-      {
-        "id": 5.94191773517532,
+        "id": "bmma@gmail.com0.3910656053927801",
+        "email": "bmma@gmail.com",
         "text": "concordo"
-      }
-    ]
-  },
-  {
-    "id": "dc855086-7d91-4b73-9d40-5c597f5b44d6",
-    "key": "bmma@cin.ufpe.br0.31517703443347544",
-    "email": "bmma@cin.ufpe.br",
-    "comment": "aaaa",
-    "like": 3,
-    "answer": [
-      {
-        "id": 0,
-        "text": ""
       },
       {
-        "id": 0.2825795262594275,
-        "text": "ccc"
-      }
-    ]
-  },
-  {
-    "id": "1d5a8d9a-3b10-4d5a-901c-670cac954c51",
-    "key": "brunom764@gmail.com0.11712413295647561",
-    "email": "brunom764@gmail.com",
-    "comment": "xxx",
-    "like": 1,
-    "answer": [
-      {
-        "id": 0,
-        "text": "a"
-      }
-    ]
-  },
-  {
-    "id": "087766f8-8b30-40a1-9a2a-62773effc547",
-    "key": "brunom764@gmail.com0.2119915863707451",
-    "email": "brunom764@gmail.com",
-    "comment": "legal",
-    "like": 0,
-    "answer": [
-      {
-        "id": 0,
-        "text": ""
-      }
-    ]
-  },
-  {
-    "id": "087766f8-8b30-40a1-9a2a-62773effc547",
-    "key": "aaa@gmail.com0.043047406268107435",
-    "email": "aaa@gmail.com",
-    "comment": "ok",
-    "like": 1,
-    "answer": [
-      {
-        "id": 0,
-        "text": ""
-      },
-      {
-        "id": 4.239652602025947,
-        "text": "legal"
+        "id": "hxb@gmail.com0.7182671719989697",
+        "email": "hxb@gmail.com",
+        "text": "discordo"
       }
     ]
   }
